@@ -1,0 +1,43 @@
+﻿@model List<Jobsku>
+
+<div class="text-center">
+    <h1 class="display-4">The list here</h1>
+    <a class="btn btn-primary" role="button" asp-controller="Jobsku" asp-action="Create">Create a Job SKU</a>
+</div>
+<br />
+
+<table word-wrap: break-word; class="table">
+    <thead>
+        <tr >
+            
+            <th scope="col">Job SKU</th>
+            <th scope="col">Cases per Unit</th>
+            <th scope="col">Flavor</th>
+            <th  scope="col">Primary Package Size</th>
+            <th scope="col">Primary Package Material</th>
+            <th scope="col">Secondary Package Size</th>
+            <th scope="col">Secondary Package Material</th>
+            <th scope="col">Is Pungent</th>
+            <th scope="col">Is Sensitive</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+            {
+        <tr>
+           
+            <td>@obj.Jobskunumber</td>
+            <td>@obj.CasesPerUnit</td>
+            <td>@obj.Flavor</td>
+            <td>@obj.PrimaryPackageSize</td>
+            <td>@obj.PrimaryPackageMaterial</td>
+                <td>@obj.SecondaryPackageSize</td>
+                <td>@obj.SecondaryPackageMaterial</td>
+                <td>@obj.IsPungent</td>
+                <td>@obj.IsSensitive</td>
+
+        </tr>
+            }
+    </tbody>
+</table>

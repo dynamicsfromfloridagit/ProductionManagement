@@ -1,0 +1,49 @@
+﻿@model Jobsku
+
+
+<div class="text-center">
+    <h1 class="display-4"> Creation here</h1>
+</div>
+
+<form method="post">
+    <div class="form-floating mb-3">
+        <input asp-for="Jobskunumber" type="text" class="form-control" id="floatingInput" placeholder="Job SKU number">
+        <label asp-for="Jobskunumber" for="floatingInput"></label>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="CasesPerUnit" type="number" class="form-control" id="floatingInput" placeholder="Job SKU number">
+        <label asp-for="CasesPerUnit" for="floatingInput"></label>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Flavor" type="text" class="form-control" id="floatingInput" placeholder="Flavor">
+        <label asp-for="Flavor" for="floatingInput"></label>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="PrimaryPackageSize" type="number" class="form-control" id="floatingInput" placeholder="Primary Package Size">
+        <label asp-for="PrimaryPackageSize" for="floatingInput"></label>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="PrimaryPackageMaterial" type="text" class="form-control" id="floatingInput" placeholder="Primary Package Material">
+        <label asp-for="PrimaryPackageMaterial" for="floatingInput"></label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="SecondaryPackageSize" type="number" class="form-control" id="floatingInput" placeholder="Secondary Package Size">
+        <label asp-for="SecondaryPackageSize" for="floatingInput"></label>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="SecondaryPackageMaterial" type="text" class="form-control" id="floatingInput" placeholder="Secondary Package Material">
+        <label asp-for="SecondaryPackageMaterial" for="floatingInput"></label>
+    </div>
+
+    <div class="mb-3 form-check">
+        <input asp-for="IsPungent" type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label asp-for="IsPungent" class="form-check-label" for="exampleCheck1">Is Pungent</label>
+    </div>
+    <div class="mb-3 form-check">
+        <input asp-for="IsSensitive" type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label asp-for="IsSensitive" class="form-check-label" for="exampleCheck1">Is Sensitive</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
