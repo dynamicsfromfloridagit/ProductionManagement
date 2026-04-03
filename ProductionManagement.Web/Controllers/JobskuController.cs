@@ -19,9 +19,13 @@ namespace ProductionManagement.Web.Controllers
         [HttpPost]
         public IActionResult Create(Jobsku _obj)
         {
-            _db.Jobskus.Add(_obj);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid) {
+                _db.Jobskus.Add(_obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            
+           return View();
         }
     }
 }

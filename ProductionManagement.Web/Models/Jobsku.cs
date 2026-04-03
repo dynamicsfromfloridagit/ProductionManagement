@@ -7,9 +7,10 @@ namespace ProductionManagement.Web.Models
         [Key]
         public int Id { get; set; }
         [Required]
+        [StringLength(24)]
         public string Jobskunumber { get; set; } = string.Empty;
         [Required]
-        public int CasesPerUnit { get; set; }
+        public float CasesPerUnit { get; set; }
         [Required]
         public string Flavor { get; set; } = string.Empty;
         [Required]
@@ -25,5 +26,7 @@ namespace ProductionManagement.Web.Models
         public bool IsPungent { get; set; }
         [Required]
         public bool IsSensitive { get; set; }
+        public bool IspPrimaryPackageRecyclable { get; set; } = true;
+
     }
 }
