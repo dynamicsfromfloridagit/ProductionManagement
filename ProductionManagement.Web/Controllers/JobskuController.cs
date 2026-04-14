@@ -47,9 +47,10 @@ namespace ProductionManagement.Web.Controllers
         {
             // this delete with FunctionOne
             using var client = _httpClientFactory.CreateClient();
-            // DeleteAsync($"{_apiUrl}{uri}/{id}");
-            client.BaseAddress = new Uri("http://localhost:7073/api/");
            
+            //client.BaseAddress = new Uri("http://localhost:7073/api/");
+            client.BaseAddress = new Uri("https://functappkokeproductionmanage.azurewebsites.net/api/");
+
             await client.GetAsync($"FunctionOne?id={id}");
 
             return RedirectToAction("Index");
