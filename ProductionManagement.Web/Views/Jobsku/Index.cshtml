@@ -15,11 +15,11 @@
             <th scope="col">Flavor</th>
             <th  scope="col">Primary Package Size</th>
             <th scope="col">Primary Package Material</th>
-            <th scope="col">Secondary Package Size</th>
+            @* <th scope="col">Secondary Package Size</th>
             <th scope="col">Secondary Package Material</th>
             <th scope="col">Is Pungent</th>
-            <th scope="col">Is Sensitive</th>
-
+            <th scope="col">Is Sensitive</th> *@
+            <th scope="col">Delete job-sku</th>
         </tr>
     </thead>
     <tbody>
@@ -32,11 +32,11 @@
             <td>@obj.Flavor</td>
             <td>@obj.PrimaryPackageSize</td>
             <td>@obj.PrimaryPackageMaterial</td>
-                <td>@obj.SecondaryPackageSize</td>
+               @*  <td>@obj.SecondaryPackageSize</td>
                 <td>@obj.SecondaryPackageMaterial</td>
                 <td>@obj.IsPungent</td>
-                <td>@obj.IsSensitive</td>
-
+                <td>@obj.IsSensitive</td> *@
+                <td> <a class="btn btn-danger" role="button" asp-controller="Jobsku" asp-action="DeleteWithFunction" asp-route-id="@obj.Id">Delete</a>  </td>
         </tr>
             }
     </tbody>
