@@ -4,15 +4,47 @@
 
 @model List<MoreData>
 
-<div class="text-center">
-    <a class="btn btn-primary" role="button" asp-controller="Iot" asp-action="Boron">Go to Boron Device</a>
+<div class="row">
+    <div class="col">
+        
+    </div>
+    <div class="col">
+        <div class="text-center">
+            <a class="btn btn-primary" role="button" asp-controller="Iot" asp-action="Boron">Click to Go to Boron Device</a>
+        </div>
+        <br />
+        <div class="text-center">
+            <h4>The last measurements storaged in Azure</h4>
+            
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Humidity</th>
+                    <th scope="col">Temperature(F)</th>
+                    <th scope="col">DateTime</th>
+                    
+                </tr>
+            </thead>
+
+            <tbody>
+                
+                    @foreach (var itemx in Model){
+                        <tr>
+                        <td scope="row">@itemx.MeasuredData.Hum </td>
+                        <td>@itemx.MeasuredData.Tfah</td>
+                        <td>@itemx.Body.published_at.AddHours(-4)</td>
+                    </tr>
+                    }
+                
+            </tbody>
+
+        </table>
+        
+    </div>
+    <div class="col">
+        
+    </div>
 </div>
-<div class="text-center">
-    <h3>The last measurements storaged in Azure</h3>
-    @foreach (var itemx in Model)
-    {
-        <div>Humidity: @itemx.MeasuredData.Hum    </div> 
-        <div> Temperature: @itemx.MeasuredData.Tfah</div>
-        <div> Time: @itemx.Body.published_at.AddHours(-4) </div>
-    }
-</div>
+
+
