@@ -1,6 +1,8 @@
+using Azure.Storage.Blobs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ProductionManagement.Web.Data;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,15 +11,32 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString)
-
     );
+
+builder.Services.AddSingleton(x => new BlobServiceClient(builder.Configuration.GetValue<string>("BlobConnection")));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
-builder.Services.AddHttpClient();
+
+
+var stringAdress = new StringBuilder();
+// TODO: build api address from configuration
+//var baseAddressUri = new Uri(builder.Configuration.GetValue<string>("ParticleApiBaseAddress") ?? throw new InvalidOperationException("Configuration value 'ParticleApiBaseAddress' not found."));
+stringAdress.Append("https://api.particle.io/v1/devices/");
+stringAdress.Append(builder.Configuration.GetValue<string>("ParticleDeviceId") ?? throw new InvalidOperationException("Configuration value 'ParticleDeviceId' not found."));
+stringAdress.Append("/");
+
+var stringBearer = builder.Configuration.GetValue<string>("BoronBearer") ?? throw new InvalidOperationException("config bearer boron value 'BoronBearer' not found");
+
+builder.Services.AddHttpClient("DefaultHttpClient", client => {
+    client.DefaultRequestHeaders.Add("Accept", "application/json");
+    client.DefaultRequestHeaders.Add("Authorization", stringBearer);
+    client.BaseAddress = new Uri(stringAdress.ToString());
+   // client.BaseAddress = baseAddressUri;
+});
 
 var app = builder.Build();
 

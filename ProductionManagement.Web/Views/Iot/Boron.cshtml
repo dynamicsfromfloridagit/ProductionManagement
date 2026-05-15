@@ -1,0 +1,28 @@
+﻿<div>Boron view</div>
+
+
+<br />
+
+@if (Model.isThereResponse)
+{
+    <div class="alert alert-success" role="alert">
+        <span>Boron response was a success</span>
+
+             <h6>Analog value: @Model.theresultadoAnalog</h6>
+        <br />
+        <h6>Is on or off: @Model.IsOnorOff</h6>
+    </div>
+
+    <br />
+    <div class="text-center">
+        <a class="btn btn-danger" role="button" asp-controller="Iot" asp-action="PostBoron">Toggle the light</a>
+    </div>
+}
+else
+{
+    <div class="alert alert-danger" role="alert">
+        <span>Boron response was NOT a success. Response is: </span>
+        <h6>@Model.responseContent</h6>
+        <h5>Make sure Boron Device is ONLINE and Try again. reload the page</h5>
+    </div>
+}

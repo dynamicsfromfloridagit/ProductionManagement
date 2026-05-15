@@ -1,0 +1,18 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+
+@deviceid = 1234567890abcdef12345678
+
+GET https://api.particle.io/v1/devices/
+Authorization: Bearer d0...
+Accept: application/json
+###
+GET https://api.particle.io/v1/devices/{{deviceid}}/analogvalue
+Authorization: Bearer d0...
+Accept: application/json
+###
+POST https://api.particle.io/v1/devices/{{deviceid}}/led
+Authorization: Bearer d0...
+Accept: application/json
+Content-Type: application/json
+
+{"arg":"off"}
